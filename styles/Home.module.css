@@ -1,11 +1,19 @@
 .container {
-  background-color: #F2F7F2;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .title {
-  font-family: cursive;
+  padding: 5px 0;
   text-align: center;
+  color: #FCFCFC;
+  font-weight: 600;
+  font-size: 2.2em;
+  text-shadow: 4px 3px 3px #111111;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
 }

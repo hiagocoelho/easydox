@@ -15,13 +15,17 @@ const EditorContainer = styled.div`
 const Buttons = styled.div`
     display: flex;
     padding: 0.1rem 0;
+    margin-bottom: .2rem;
 
     @media(max-width: 800px) {
         padding: 0 0;
     }
 
     button {
-        font-family: 'Times New Roman';
+        font-family: sans-serif;
+        border: 1px solid black;
+        padding: 2px 10px;
+        box-shadow: 4px 3px 3px #111111;
     }
 `
 
@@ -29,6 +33,7 @@ const TextField = styled.textarea`
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    font-family: sans-serif;
     width: 100%;
     height: 500px;
     resize: none;
@@ -36,6 +41,11 @@ const TextField = styled.textarea`
     font-style: ${props => props.textStyles.fontStyle || 'normal'};
     text-decoration: ${props => props.textStyles.textDecoration || 'initial'};
     padding: 4px;
+    border: none;
+    border-radius: 3px;
+    outline: none;
+    background-color: #ffffff;
+    box-shadow: 4px 3px 3px #111111;
 `
 
 export default function Editor () {
