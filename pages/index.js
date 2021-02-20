@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h2 className={styles.title}>easy.dox</h2>
+        <span className={styles.title}>easy.dox</span>
         <Editor />
       </main>
     </div>
