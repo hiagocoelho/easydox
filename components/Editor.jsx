@@ -47,6 +47,13 @@ const TextField = styled.textarea`
     background-color: #ffffff;
     box-shadow: 4px 3px 3px #111111;
 `
+const DownloadButton = styled.button`
+    margin-top: 0.25rem;
+    margin-left: auto;
+    max-width: max-content;
+    padding: 0;
+    font-size: 1rem;
+`
 
 export default function Editor () {
     const [text, setText] = useState('')
@@ -78,6 +85,7 @@ export default function Editor () {
                 <button onClick={() => stylesHandler('textDecoration', 'underline')}><u>u</u></button>
             </Buttons>
             <TextField autoComplete='off' value={text} onChange={e => textHandler(e)} textStyles={textStyles} spellCheck="false" placeholder='Start writing:'/>
+            <DownloadButton>Download</DownloadButton>
         </EditorContainer>
     )
 }
