@@ -11,7 +11,7 @@ Made with:
 ## To-do list:
 * create the feature of putting styles in separate parts of the document;
 * add new style options to the user;
-* create the feature of export the document;
+* create the feature of export the document (implementing);
 
 ## Quick Setup:
 

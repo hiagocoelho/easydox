@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import jsPDF from 'jspdf';
 
 const EditorContainer = styled.div`
     width: 50rem;
@@ -33,7 +34,8 @@ const TextField = styled.textarea`
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: ${props => props.textStyles.fontFamily || 'Times' };
+    font-size: ${props => props.textStyles.fontSize || '12px' };
     width: 100%;
     height: 500px;
     resize: none;
@@ -56,6 +58,8 @@ const DownloadButton = styled.button`
 `
 
 export default function Editor () {
+    const [fontSize, setFontSize] = useState(12);
+    const [fontFamily, setFontFamily] = useState('Times');
     const [text, setText] = useState('')
     const [textStyles, setTextStyles] = useState({})
 
@@ -77,6 +81,16 @@ export default function Editor () {
         }
     }
 
+    function generatePDF () {
+        const pdfName = prompt('Insira o nome do arquivo a ser salvado: ');
+        var doc = new jsPDF();
+        doc.setFontSize(fontSize);
+        doc.setFont(fontFamily);
+        var splittedText = doc.splitTextToSize(text, 200);
+        doc.text(3, 7, splittedText);
+        doc.save(`${pdfName}.pdf`);
+    }
+
     return (
         <EditorContainer>
             <Buttons>
@@ -85,7 +99,7 @@ export default function Editor () {
                 <button onClick={() => stylesHandler('textDecoration', 'underline')}><u>u</u></button>
             </Buttons>
             <TextField autoComplete='off' value={text} onChange={e => textHandler(e)} textStyles={textStyles} spellCheck="false" placeholder='Start writing:'/>
-            <DownloadButton>Download</DownloadButton>
+            <DownloadButton onClick={generatePDF}>Download</DownloadButton>
         </EditorContainer>
     )
 }
