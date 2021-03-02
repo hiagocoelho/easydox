@@ -1,3 +1,7 @@
+/* 
+ESTE COMPONENTE ESTÁ SENDO SEPARADO EM COMPONENTES MENORES, E POSTERIORMENTE SERÁ REMOVIDO
+*/
+
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import jsPDF from 'jspdf';
@@ -82,7 +86,7 @@ export default function Editor () {
     }
 
     function generatePDF () {
-        const pdfName = prompt('Insira o nome do arquivo a ser salvado: ');
+        const pdfName = prompt('Insira o nome do arquivo a ser salvo: ');
         var doc = new jsPDF();
         doc.setFontSize(fontSize);
         doc.setFont(fontFamily);
@@ -98,7 +102,14 @@ export default function Editor () {
                 <button onClick={() => stylesHandler('fontStyle', 'italic')}><i>i</i></button>
                 <button onClick={() => stylesHandler('textDecoration', 'underline')}><u>u</u></button>
             </Buttons>
-            <TextField autoComplete='off' value={text} onChange={e => textHandler(e)} textStyles={textStyles} spellCheck="false" placeholder='Start writing:'/>
+            <TextField
+            autoComplete='off'
+            value={text}
+            onChange={e => textHandler(e)}
+            textStyles={textStyles} 
+            spellCheck="false" 
+            placeholder='Start writing:'
+            />
             <DownloadButton onClick={generatePDF}>Download</DownloadButton>
         </EditorContainer>
     )
